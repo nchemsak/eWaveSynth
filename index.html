@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Title</title>
+  <!-- bootstrap stylesheet -->
+  <link rel="stylesheet" href="lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <!-- custom stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <audio id="myAudio" src="path-to-audio.mp3"></audio>
+  <div id="wrapper">
+    <canvas class="thereminCanvas" id="thereminCanvas"></canvas>
+    <a id="close" href=""></a>
+    <div>
+      <button id="lfoStart">LFO Play</button>
+      <button id="lfoStop">LFO Stop</button>
+      <button id="thereminStart">Theremin Play</button>
+      <button id="thereminStop">Theremin Stop</button>
+      <button id="squareStart">SquareWave Play</button>
+      <button id="squareStop">SquareWave Stop</button>
+      <button id="sineStart">SineWave Play</button>
+      <button id="sineStop">SineWave Stop</button>
+      <button id="sawStart">SawtoothWave Play</button>
+      <button id="sawStop">SawtoothWave Stop</button>
+      <button id="triStart">TriangleWave Play</button>
+      <button id="triStop">TriangleWave Stop</button>
+      <button id="synthStart">Synth Play</button>
+      <button id="synthStop">Synth Stop</button>
+      <!-- <button onclick="document.getElementById('player').pause()">Pause</button>
+      <button onclick="document.getElementById('player').volume += 0.1">Vol+ </button>
+      <button onclick="document.getElementById('player').volume -= 0.1">Vol- </button> -->
+      <!-- </div> -->
+      <ul>
+        <li>
+          <a class='list-item' href=''>
+            <i class='icon-reorder'>Reverb</i>
+          </a>
+        </li>
+        <li>
+          <a class='list-item' href=''>
+            <i class='icon-th-large'>Distortion</i>
+          </a>
+        </li>
+        <li>
+          <a class='list-item' href="" f=''>
+            <i class='icon-bar-chart'>Overdrive</i>
+          </a>
+        </li>
+        <li>
+          <a class='list-item' href=''>
+            <i class='icon-tasks'>Delay</i>
+          </a>
+        </li>
+        <li>
+          <a class='list-item' href=''>
+            <i class='icon-bell'>Volume</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- bootstrap script tags -->
+  <script src="lib/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/lib/node_modules/tone/build/Tone.min.js"></script>
+  <script src="javascripts/loopOscillator.js"></script>
+  <script src="javascripts/playWav.js"></script>
+  <script src="javascripts/theramin.js"></script>
+  <script src="javascripts/lfo.js"></script>
+  <script src="javascripts/waveForms.js"></script>
+  <!-- <script src="javascripts/gamepad.js"></script> -->
+  <!-- <script src="javascripts/curtain.js"></script> -->
+</body>
+
+</html>
