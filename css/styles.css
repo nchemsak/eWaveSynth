@@ -1,6 +1,12 @@
+/******************************************
+              CANVAS STYLING
+******************************************/
 canvas {
   cursor: none; }
 
+/******************************************
+          AUDIO PLAYBACK STYLING
+******************************************/
 * {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -23,15 +29,6 @@ body {
 
 body {
   font-family: "Lato", "Helvetica", "sans-serif";
-  font-style: normal;
-  font-size: 2em;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -40,11 +37,9 @@ body {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0); }
 
-ul {
-  position: relative;
-  -webkit-transform: rotate(-35deg) skew(20deg, 5deg);
-  transform: rotate(-35deg) skew(20deg, 5deg); }
-
+/******************************************
+              BLACK BUTTON STYLING
+******************************************/
 .list-item {
   background: #000;
   color: #575757;
@@ -73,7 +68,8 @@ ul {
   transform: translate(2em, -0.9em);
   -webkit-transition: all .25s linear;
   transition: all .5s linear;
-  box-shadow: -2em 2em 0 darkgrey; }
+  box-shadow: -2em 2em 0 darkgrey;
+  text-decoration: none; }
 
 .list-item:hover:before,
 .list-item:hover:after {
@@ -122,5 +118,81 @@ ul {
 
 li {
   list-style: none; }
+
+/******************************************
+              PIANO STYLING
+******************************************/
+.piano {
+  text-align: center;
+  margin: 15px 0;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  width: 100%; }
+
+.piano ul li .key {
+  width: 56px;
+  height: 140px; }
+
+.piano ul li .upper-key {
+  height: 84px;
+  width: 22.4px; }
+
+.piano ul li:nth-child(7n-6) .upper-key,
+.piano ul li:nth-child(7n-2) .upper-key {
+  left: 43.68px; }
+
+.piano ul li:nth-child(7n-5) .upper-key {
+  left: 47.04px; }
+
+.piano ul li:nth-child(7n-4) .upper-key,
+.piano ul li:nth-child(7n-1) .upper-key {
+  left: 50.4px; }
+
+.piano ul li:nth-child(7n - 3) .upper-key,
+.piano ul li:nth-child(7n) .upper-key {
+  display: none; }
+
+.piano ul {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline; }
+
+.piano ul li {
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  border: red 1px solid; }
+
+.piano ul li .key {
+  cursor: pointer; }
+
+.piano ul li .key:active {
+  background: #f6ecdd;
+  box-shadow: gray 0px 1px 3px -1px; }
+
+.piano ul li .upper-key {
+  border-radius: 3px;
+  border: white 1px solid;
+  transition-property: background, box-shadow;
+  transition-duration: 0.1s;
+  box-shadow: black 0px 3px 3px 0px;
+  cursor: pointer;
+  background: #262626;
+  position: absolute;
+  top: 0;
+  z-index: 2; }
+
+.piano ul li .upper-key:active {
+  box-shadow: black 0px 1px 1px 0px; }
+
+.piano ul li .upper-key:hover {
+  background-color: tomato; }
+
+.piano ul li .key:hover {
+  background-color: tomato; }
 
 /*# sourceMappingURL=styles.css.map */
