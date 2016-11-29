@@ -15,9 +15,9 @@ function lfoStart() {
   var lfo = lfoContext.createOscillator();
   var gains = lfoContext.createGain();
   console.log("gains: ", gains);
-  oscc.frequency.value = 1000;
+  oscc.frequency.value = 500;
   lfo.type = 'square';
-  lfo.frequency.value = 1;
+  lfo.frequency.value = 100;
   lfo.connect(gains);
   console.log("oscc.gains: ", oscc.gains);
   gains.gain.value = 100;

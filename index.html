@@ -12,18 +12,79 @@
 </head>
 
 <body>
-  <audio id="myAudio" src="path-to-audio.mp3"></audio>
   <div id="wrapper">
     <canvas class="thereminCanvas" id="thereminCanvas"></canvas>
     <a id="close" href=""></a>
     <div>
+      <div class='piano'>
+        <ul>
+          <li>
+            <div class='key'></div>
+            <div class='upper-key'></div>
+          </li>
+          <li>
+            <div class='key'></div>
+            <div class='upper-key'></div>
+          </li>
+          <li>
+            <div class='key'></div>
+            <div class='upper-key'></div>
+          </li>
+          <li>
+            <div class='key'></div>
+            <div class='upper-key'></div>
+          </li>
+          <li>
+            <div class='key' id='sineStart'></div>
+            <div class='upper-key'></div>
+          </li>
+          <li>
+            <div class='key'></div>
+            <div class='upper-key'></div>
+          </li>
+          <li>
+            <div class='key'></div>
+            <div class='upper-key'></div>
+          </li>
+          <li>
+            <div class='key'></div>
+            <div class='upper-key'></div>
+          </li>
+          <li>
+            <div class='key'></div>
+            <div class='upper-key'></div>
+          </li>
+          <li>
+            <div class='key'></div>
+            <div class='upper-key'></div>
+          </li>
+          <li>
+            <div class='key'></div>
+            <div class='upper-key'></div>
+          </li>
+          <li>
+            <div class='key' id="upperC"></div>
+            <div class='upper-key'></div>
+          </li>
+          <li>
+            <div class='key'></div>
+            <div class='upper-key'></div>
+          </li>
+          <li>
+            <div class='key'></div>
+            <div class='upper-key'></div>
+          </li>
+        </ul>
+      </div>
+      <input id="audio_file" type="file" accept="audio/*" />
+      <audio id="audio_player" />
       <button id="lfoStart">LFO Play</button>
       <button id="lfoStop">LFO Stop</button>
-      <button id="thereminStart">Theremin Play</button>
+      <!-- <button id="thereminStart">Theremin Play</button> -->
       <button id="thereminStop">Theremin Stop</button>
       <button id="squareStart">SquareWave Play</button>
       <button id="squareStop">SquareWave Stop</button>
-      <button id="sineStart">SineWave Play</button>
+      <!-- <button id="sineStart">SineWave Play</button> -->
       <button id="sineStop">SineWave Stop</button>
       <button id="sawStart">SawtoothWave Play</button>
       <button id="sawStop">SawtoothWave Stop</button>
@@ -37,13 +98,13 @@
       <!-- </div> -->
       <ul>
         <li>
-          <a class='list-item' href=''>
-            <i class='icon-reorder'>Reverb</i>
+          <a class='list-item' id='thereminStart'>
+            Theremin
           </a>
         </li>
         <li>
-          <a class='list-item' href=''>
-            <i class='icon-th-large'>Distortion</i>
+          <!-- <a class='list-item' id='sineStart'> -->
+          <i>SineWave</i>
           </a>
         </li>
         <li>
