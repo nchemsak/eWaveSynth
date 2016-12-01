@@ -6,8 +6,8 @@ var WIDTH = 800;
 var HEIGHT = 385;
 var maxFreq = 750;
 var maxVol = 0.1;
-var initialFreq = 500;
-var initialVol = 0.1;
+var initialFreq = 200;
+// var initialVol = 0.5;
 // var gain = thereminContext.createGain();
 // var oscillator = thereminContext.createOscillator();
 
@@ -26,15 +26,15 @@ document.getElementById('thereminStart').addEventListener('click', function() {
                THEREMIN START
 **********************************************/
 function thereminStart() {
-  var squareFreqVal = 500;
+  var squareFreqVal = 100;
   var oscillator = thereminContext.createOscillator();
   var gain = thereminContext.createGain();
   oscillator.frequency.value = squareFreqVal;
   oscillator.connect(thereminContext.destination);
-  gain.connect(thereminContext.destination);
-  gain.gain.value = 0.3;
-  console.log("gain.gain.value: ", gain.gain.value);
-  oscillator.type = 'sine';
+  // gain.connect(thereminContext.destination);
+  // gain.gain.value = 0.3;
+  // console.log("gain.gain.value: ", gain.gain.value);
+  oscillator.type = 'square';
   oscillator.frequency.value = initialFreq;
   oscillator.start();
 
@@ -58,6 +58,7 @@ function thereminStart() {
   function updatePage(e) {
     CurX = (window.Event) ? e.pageX : event.clientX + (document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft);
     console.log("window: ", window);
+    console.log("window.Event: ", window.Event);
     console.log("CurX: ", CurX);
     CurY = (window.Event) ? e.pageY : event.clientY + (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
     console.log("CurY: ", CurY);

@@ -41,8 +41,8 @@ document.getElementById('squareStart').addEventListener('click', function() {
   squareStart();
 });
 
-// document.getElementById('sineStart').addEventListener('mouseover', function() {
-//   sineStart();
+// document.getElementById('keyPlay').addEventListener('mouseover', function() {
+//   keyPlay();
 // });
 
 document.getElementById('sawStart').addEventListener('click', function() {
@@ -53,9 +53,12 @@ document.getElementById('triStart').addEventListener('click', function() {
   triStart();
 });
 
-
+/********************************************
+      RADIO BUTTONS CHOOSING WAVE FORM
+**********************************************/
 
 $(document).ready(function() {
+  oscType = 'square';
   $('input[type=radio]').click(function() {
     if (this.id === 'Sine') {
       oscType = "sine";
@@ -72,112 +75,113 @@ $(document).ready(function() {
 
 
 /********************************************
-               SINE WAVE
+          Keyboard Event Listener
 **********************************************/
 
-
-
-addEventListener("keydown", function(event) {
+addEventListener("keydown", function() {
   if (event.keyCode === 9) {
     $('#F3').addClass('close4');
-    sineStart(F3);
+    keyPlay(F3);
   } else if (event.keyCode === 81) {
     $('#G3').addClass('nick');
-    sineStart(G3);
+    keyPlay(G3);
   } else if (event.keyCode === 87) {
     $('#A3').addClass('nick');
-    sineStart(A3);
+    keyPlay(A3);
   } else if (event.keyCode === 69) {
     $('#B3').addClass('nick');
-    sineStart(B3);
+    keyPlay(B3);
   } else if (event.keyCode === 82) {
     $('#middleC').addClass('close5');
-    sineStart(middleC);
+    keyPlay(middleC);
   } else if (event.keyCode === 84) {
     $('#D4').addClass('nick');
-    sineStart(D4);
+    keyPlay(D4);
   } else if (event.keyCode === 89) {
     $('#E4').addClass('nick');
-    sineStart(E4);
+    keyPlay(E4);
   } else if (event.keyCode === 85) {
     $('#F4').addClass('close3');
-    sineStart(F4);
+    keyPlay(F4);
   } else if (event.keyCode === 73) {
     $('#G4').addClass('close1');
-    sineStart(G4);
+    keyPlay(G4);
   } else if (event.keyCode === 79) {
     $('#A4').addClass('close2');
-    sineStart(A4);
+    keyPlay(A4);
   } else if (event.keyCode === 80) {
     $('#B4').addClass('nick');
-    sineStart(B4);
+    keyPlay(B4);
   } else if (event.keyCode === 219) {
     $('#C5').addClass('nick');
-    sineStart(C5);
+    keyPlay(C5);
   } else if (event.keyCode === 221) {
     $('#D5').addClass('nick');
-    sineStart(D5);
+    keyPlay(D5);
   } else if (event.keyCode === 220) {
     $('#E5').addClass('nick');
-    sineStart(E5);
+    keyPlay(E5);
   }
 
 });
 
+/********************************************
+Keyboard play note and listen for Keyup to stop
+**********************************************/
 
 
-function sineStart(freq) {
-  var sineOscillator = oscContext.createOscillator();
-  // console.log("sineOscillator: ", sineOscillator);
-  sineOscillator.type = oscType;
+function keyPlay(freq) {
+  var oscillator = oscContext.createOscillator();
+  // console.log("oscillator: ", oscillator);
+  oscillator.type = oscType;
   console.log("oscType: ", oscType);
-  sineOscillator.frequency.value = freq;
-  sineOscillator.connect(oscContext.destination);
-  sineOscillator.start();
-  // sineOscillator.stop(1);
+  oscillator.frequency.value = freq;
+  oscillator.connect(oscContext.destination);
+  oscillator.start();
+  // oscillator.stop(1);
   addEventListener("keyup", function(event) {
     if (event.keyCode === 9) {
       $('#F3').removeClass('close4');
-      sineOscillator.stop();
+      oscillator.stop();
     } else if (event.keyCode === 81) {
       $('#G3').removeClass('nick');
-      sineOscillator.stop();
+      oscillator.stop();
     } else if (event.keyCode === 87) {
       $('#A3').removeClass('nick');
-      sineOscillator.stop();
+      oscillator.stop();
     } else if (event.keyCode === 69) {
       $('#B3').removeClass('nick');
-      sineOscillator.stop();
+      oscillator.stop();
     } else if (event.keyCode === 82) {
       $('#middleC').removeClass('close5');
-      sineOscillator.stop();
+      oscillator.stop();
     } else if (event.keyCode === 84) {
       $('#D4').removeClass('nick');
-      sineOscillator.stop();
+      oscillator.stop();
     } else if (event.keyCode === 89) {
       $('#E4').removeClass('nick');
-      sineOscillator.stop();
+      oscillator.stop();
     } else if (event.keyCode === 85) {
       $('#F4').removeClass('close3');
-      sineOscillator.stop();
+      oscillator.stop();
     } else if (event.keyCode === 73) {
       $('#G4').removeClass('close1');
-      sineOscillator.stop();
+      oscillator.stop();
     } else if (event.keyCode === 79) {
       $('#A4').removeClass('close2');
-      sineOscillator.stop();
+      oscillator.stop();
     } else if (event.keyCode === 80) {
       $('#B4').removeClass('nick');
-      sineOscillator.stop();
+      oscillator.stop();
     } else if (event.keyCode === 219) {
       $('#C5').removeClass('nick');
-      sineOscillator.stop();
+      oscillator.stop();
     } else if (event.keyCode === 221) {
       $('#D5').removeClass('nick');
-      sineOscillator.stop();
+      oscillator.stop();
     } else if (event.keyCode === 220) {
       $('#E5').removeClass('nick');
-      sineOscillator.stop();
+      oscillator.stop();
     }
 
   });
@@ -189,7 +193,7 @@ function sineStart(freq) {
 // var analyser = oscContext.createAnalyser();
 // var contentWidth = document.getElementById('content').offsetWidth;
 // var oscilloscope = new Oscilloscope(oscContext, analyser, contentWidth, 150);
-// sineOscillator.connect(oscilloscope.analyser);
+// oscillator.connect(oscilloscope.analyser);
 
 
 /********************************************
@@ -206,8 +210,6 @@ function squareStart() {
     squareOscillator.stop();
   });
 }
-
-
 
 
 /********************************************
@@ -241,4 +243,4 @@ function triStart() {
 }
 
 
-// module.exports = { sineStart, squareStart, sawStart, triStart };
+// module.exports = { keyPlay, squareStart, sawStart, triStart };
