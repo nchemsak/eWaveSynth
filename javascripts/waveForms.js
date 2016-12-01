@@ -3,14 +3,15 @@ var AudioContext;
 var oscContext = new AudioContext();
 
 // Create an audio-context
-var audioContext = new window.AudioContext(),
-  oscillator = audioContext.createOscillator();
+var audioContext = new window.AudioContext();
+// oscillator = audioContext.createOscillator();
 
 // shapes
 var oscTypeSquare = "square";
 var oscTypeSine = "sine";
 var oscTypeSaw = "sawtooth";
 var oscTypeTri = "triangle";
+var oscType;
 
 // frequencies
 var squareFreqVal = 1000;
@@ -18,28 +19,20 @@ var sineFreqVal = 261.625565;
 var sawFreqVal = 1000;
 var triFreqVal = 1000;
 
-var sineOscillator = oscContext.createOscillator();
 
 let F3 = 174.614,
   G3 = 195.998,
   A3 = 220,
   B3 = 246.942,
-  middleC = {
-    freq: 261.625565,
-    color: 'red'
-  },
+  middleC = 261.625565,
   Csh4 = 277.183,
   D4 = 293.665,
-
   E4 = 329.628,
   F4 = 349.228,
   G4 = 391.995,
-
   A4 = 440,
-  // B4 = 466.164,
   B4 = 493.883,
   C5 = 523.251,
-
   D5 = 587.330,
   E5 = 659.255;
 
@@ -58,6 +51,23 @@ document.getElementById('sawStart').addEventListener('click', function() {
 
 document.getElementById('triStart').addEventListener('click', function() {
   triStart();
+});
+
+
+
+$(document).ready(function() {
+  $('input[type=radio]').click(function() {
+    if (this.id === 'Sine') {
+      oscType = "sine";
+    } else if (this.id === 'Square') {
+      oscType = "square";
+    } else if (this.id === 'Saw') {
+      oscType = "sawtooth";
+    } else if (this.id === 'Triangle') {
+      oscType = "triangle";
+    }
+    return oscType;
+  });
 });
 
 
@@ -82,7 +92,7 @@ addEventListener("keydown", function(event) {
     sineStart(B3);
   } else if (event.keyCode === 82) {
     $('#middleC').addClass('close5');
-    sineStart(middleC.freq);
+    sineStart(middleC);
   } else if (event.keyCode === 84) {
     $('#D4').addClass('nick');
     sineStart(D4);
@@ -119,7 +129,8 @@ addEventListener("keydown", function(event) {
 function sineStart(freq) {
   var sineOscillator = oscContext.createOscillator();
   // console.log("sineOscillator: ", sineOscillator);
-  sineOscillator.type = oscTypeSaw;
+  sineOscillator.type = oscType;
+  console.log("oscType: ", oscType);
   sineOscillator.frequency.value = freq;
   sineOscillator.connect(oscContext.destination);
   sineOscillator.start();

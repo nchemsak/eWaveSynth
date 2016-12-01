@@ -7,23 +7,40 @@
   <title>Title</title>
   <!-- bootstrap stylesheet -->
   <link rel="stylesheet" href="lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <!-- <link type="text/css" rel="stylesheet" href="lib/node_modules/materialize-css/dist/css/materialize.min.css" media="screen,projection" /> -->
   <!-- custom stylesheet -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
   <!-- <div id="wrapper"> -->
-
-
-
-
-
   <div id="content">
     <canvas class="thereminCanvas" id="thereminCanvas"></canvas>
-    <a id="close" href=""></a>
-    <canvas id="oscilloscope"></canvas>
+    <!-- <a id="close" href=""></a> -->
+    <!-- <canvas id="oscilloscope"></canvas> -->
     <div class='piano'>
-      <ul>
+      <!-- <a class="waves-effect waves-light btn-large" href="#">Wave</a> -->
+      <!-- <a href="#!" class="btn waves-effect waves-red">Send</a> -->
+      <a href="#!" class="waves-effect waves-red btn" onclick="Materialize.showStaggeredList('#staggered')">Keyboard</a>
+      <form action="#" name="waveOption">
+        <div class="radio1">
+          <input name="group1" type="radio" id="Sine" />
+          <label for="test1">Sine</label>
+        </div>
+        <div class="radio1">
+          <input name="group1" type="radio" id="Square" />
+          <label for="test2">Square</label>
+        </div>
+        <div class="radio1">
+          <input name="group1" type="radio" id="Saw" />
+          <label for="test2">Saw</label>
+        </div>
+        <div class="radio1">
+          <input name="group1" type="radio" id="Triangle" />
+          <label for="test2">Triangle</label>
+        </div>
+      </form>
+      <ul id='staggered'>
         <li>
           <div class='key' id='F3'></div>
           <div class='upper-key'></div>
@@ -131,17 +148,17 @@
       </a>
     </li>
   </ul>
-
   <script src="lib/node_modules/jquery/dist/jquery.min.js"></script>
   <script src="lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <!-- <script src="/lib/node_modules/tone/build/Tone.min.js"></script> -->
-   <script src="lib/node_modules/angular/angular.min.js"></script>
+  <script src="lib/node_modules/angular/angular.min.js"></script>
   <script src="lib/bower_components/oscilloscope.js/oscilloscope.js"></script>
   <script src="javascripts/loopOscillator.js"></script>
   <!-- <script src="javascripts/playWav.js"></script> -->
   <script src="javascripts/theramin.js"></script>
   <script src="javascripts/lfo.js"></script>
   <script src="javascripts/waveForms.js"></script>
+  <script src="lib/node_modules/materialize-css/dist/js/materialize.min.js"></script>
   <!-- <script src="javascripts/gamepad.js"></script> -->
   <!-- <script src="javascripts/curtain.js"></script> -->
 </body>

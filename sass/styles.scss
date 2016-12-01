@@ -3,7 +3,7 @@
 ******************************************/
 
 canvas {
-    // background-color: #79BD9A;
+  // background-color: #79BD9A;
   // width: 100%;
   // margin-top: 25px;
   // margin-left: 25px;
@@ -80,20 +80,8 @@ canvas {
   // background-color: black;
 }
 
-// body {
-//     background: black;
-// }
-// buttons
-// * {
-//   margin: 0;
-//   overflow: hidden;
-//   -webkit-user-select: none;
-//   -moz-user-select: none;
-//   -ms-user-select: none;
-//   -o-user-select: none;
-//   user-select: none;
-//   background-color: black;
-// }
+
+
 body {
   background: black;
 }
@@ -240,32 +228,34 @@ li {
   width: 100%;
 }
 
+.piano ul li .key {
+  width: 56px;
+  height: 140px;
+}
 
-  .piano ul li .key {
-    width: 56px;
-    height: 140px;
-  }
-  .piano ul li .upper-key {
-    height: 84px;
-    width: 22.4px;
-  }
-  .piano ul li:nth-child(7n-6) .upper-key,
-  .piano ul li:nth-child(7n-2) .upper-key {
-    left: 43.68px;
-  }
-  .piano ul li:nth-child(7n-5) .upper-key {
-    left: 47.04px;
-  }
-  .piano ul li:nth-child(7n-4) .upper-key,
-  .piano ul li:nth-child(7n-1) .upper-key {
-    left: 50.4px;
-  }
-  .piano ul li:nth-child(7n - 3) .upper-key,
-  .piano ul li:nth-child(7n) .upper-key {
-    display: none;
-  }
+.piano ul li .upper-key {
+  height: 84px;
+  width: 22.4px;
+}
 
+.piano ul li:nth-child(7n-6) .upper-key,
+.piano ul li:nth-child(7n-2) .upper-key {
+  left: 43.68px;
+}
 
+.piano ul li:nth-child(7n-5) .upper-key {
+  left: 47.04px;
+}
+
+.piano ul li:nth-child(7n-4) .upper-key,
+.piano ul li:nth-child(7n-1) .upper-key {
+  left: 50.4px;
+}
+
+.piano ul li:nth-child(7n - 3) .upper-key,
+.piano ul li:nth-child(7n) .upper-key {
+  display: none;
+}
 
 .piano ul {
   display: inline-block;
@@ -323,35 +313,44 @@ li {
   background-color: tomato;
 }
 
-
 .nick {
-
   background-color: tomato;
 }
 
-
-
 .close1 {
-
   background-color: red;
 }
 
 .close2 {
-
   background-color: orange;
 }
 
 .close3 {
-
   background-color: pink;
 }
 
 .close4 {
-
   background-color: yellow;
 }
 
 .close5 {
-
   background-color: white;
 }
+
+.radio1 {
+  display: inline;
+}
+
+
+li {
+  opacity: 0;
+}
+
+.btn {
+  background-color: black;
+  border: 1px solid white;
+}
+
+
+
+

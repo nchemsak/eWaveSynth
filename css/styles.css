@@ -210,4 +210,14 @@ li {
 .close5 {
   background-color: white; }
 
+.radio1 {
+  display: inline; }
+
+li {
+  opacity: 0; }
+
+.btn {
+  background-color: black;
+  border: 1px solid white; }
+
 /*# sourceMappingURL=styles.css.map */
