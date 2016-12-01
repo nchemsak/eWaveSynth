@@ -2,6 +2,9 @@
 var AudioContext;
 var oscContext = new AudioContext();
 
+// Create an audio-context
+var audioContext = new window.AudioContext(),
+  oscillator = audioContext.createOscillator();
 
 // shapes
 var oscTypeSquare = "square";
@@ -9,16 +12,13 @@ var oscTypeSine = "sine";
 var oscTypeSaw = "sawtooth";
 var oscTypeTri = "triangle";
 
-
 // frequencies
 var squareFreqVal = 1000;
 var sineFreqVal = 261.625565;
 var sawFreqVal = 1000;
 var triFreqVal = 1000;
 
-
 var sineOscillator = oscContext.createOscillator();
-
 
 let F3 = 174.614,
   G3 = 195.998,
@@ -36,19 +36,13 @@ let F3 = 174.614,
   G4 = 391.995,
 
   A4 = 440,
-  upperAsh = 466.164,
+  // B4 = 466.164,
   B4 = 493.883,
   C5 = 523.251,
 
   D5 = 587.330,
   E5 = 659.255;
 
-// var frequency = 220;                      // 220 Hz = "A" note
-// var samples_length = 44100;               // Plays for 1 second (44.1 KHz)
-// for (var i=0; i < samples_length ; i++) { // fills array with samples
-//   var t = i/samples_length;               // time from 0 to 1
-//   samples[i] = sin( frequency * 2*PI*t ); // wave equation (between -1,+1)
-// }
 
 document.getElementById('squareStart').addEventListener('click', function() {
   squareStart();
@@ -67,96 +61,55 @@ document.getElementById('triStart').addEventListener('click', function() {
 });
 
 
-// When a key on the keyboard is pressed, your browser fires a "keydown" event. When it is released, a "keyup" event fires.
-// addEventListener("keydown", function() {
-//   if (event.keyCode === 82)
-//     sineStart();
-// document.body.style.background = "violet";
-
-
-// });
-// addEventListener("keyup", function(event) {
-//   if (event.keyCode === 82)
-//     document.body.style.background = "black";
-// });
-
-
-// 24 keys
-// 14 white keys - middle c is "R"
-// 10 black keys
-
 /********************************************
                SINE WAVE
 **********************************************/
 
-// THIS CODE WORKS!!!!!! JUST TRYING CODE BELOW
-// addEventListener("keydown", function() {
-//   if (event.keyCode === 82) {
-//     var sineOscillator = oscContext.createOscillator();
-//     // console.log("sineOscillator: ", sineOscillator);
-//     sineOscillator.type = oscTypeSine;
-//     sineOscillator.frequency.value = middleC.freq;
-//     sineOscillator.connect(oscContext.destination);
-//     sineOscillator.start();
-//     // sineOscillator.stop(1);
-//     addEventListener("keyup", function(event) {
-//       if (event.keyCode === 82)
-//         sineOscillator.stop();
-//       // document.body.style.background = "black";
-//     });
-//   }
-//   document.getElementById('sineStart').addEventListener('mouseout', function() {
-//     sineOscillator.stop();
-//   });
-// });
 
 
-
-
-
-// TESTING NEW EVENT LISTENER
-addEventListener("keydown", function() {
-  if (event.keyCode === 82) {
-    // console.log("82");
-    // sineOscillator.frequency.value = middleC.freq;
+addEventListener("keydown", function(event) {
+  if (event.keyCode === 9) {
+    $('#F3').addClass('close4');
+    sineStart(F3);
+  } else if (event.keyCode === 81) {
+    $('#G3').addClass('nick');
+    sineStart(G3);
+  } else if (event.keyCode === 87) {
+    $('#A3').addClass('nick');
+    sineStart(A3);
+  } else if (event.keyCode === 69) {
+    $('#B3').addClass('nick');
+    sineStart(B3);
+  } else if (event.keyCode === 82) {
+    $('#middleC').addClass('close5');
     sineStart(middleC.freq);
   } else if (event.keyCode === 84) {
-    // console.log("84");
-    sineStart(G4);
-    sineOscillator.frequency.value = D4;
-
+    $('#D4').addClass('nick');
+    sineStart(D4);
   } else if (event.keyCode === 89) {
-    sineOscillator = E4;
-    console.log("89");
-
+    $('#E4').addClass('nick');
+    sineStart(E4);
   } else if (event.keyCode === 85) {
-    sineOscillator.frequency.value = F4;
-    console.log("85");
-
+    $('#F4').addClass('close3');
+    sineStart(F4);
   } else if (event.keyCode === 73) {
-    sineOscillator.frequency.value = G4;
-    console.log("73");
-
+    $('#G4').addClass('close1');
+    sineStart(G4);
   } else if (event.keyCode === 79) {
-    sineOscillator.frequency.value = G4;
-    console.log("79");
-
+    $('#A4').addClass('close2');
+    sineStart(A4);
   } else if (event.keyCode === 80) {
-    sineOscillator.frequency.value = G4;
-    console.log("80");
-
+    $('#B4').addClass('nick');
+    sineStart(B4);
   } else if (event.keyCode === 219) {
-    sineOscillator.frequency.value = D4;
-    console.log("219");
-
+    $('#C5').addClass('nick');
+    sineStart(C5);
   } else if (event.keyCode === 221) {
-    sineOscillator.frequency.value = D4;
-    console.log("221");
-
+    $('#D5').addClass('nick');
+    sineStart(D5);
   } else if (event.keyCode === 220) {
-    sineOscillator.frequency.value = D4;
-    console.log("220");
-
+    $('#E5').addClass('nick');
+    sineStart(E5);
   }
 
 });
@@ -166,22 +119,66 @@ addEventListener("keydown", function() {
 function sineStart(freq) {
   var sineOscillator = oscContext.createOscillator();
   // console.log("sineOscillator: ", sineOscillator);
-  sineOscillator.type = oscTypeSine;
+  sineOscillator.type = oscTypeSaw;
   sineOscillator.frequency.value = freq;
   sineOscillator.connect(oscContext.destination);
   sineOscillator.start();
   // sineOscillator.stop(1);
   addEventListener("keyup", function(event) {
-    if (event.keyCode === 82)
+    if (event.keyCode === 9) {
+      $('#F3').removeClass('close4');
       sineOscillator.stop();
-    // document.body.style.background = "black";
+    } else if (event.keyCode === 81) {
+      $('#G3').removeClass('nick');
+      sineOscillator.stop();
+    } else if (event.keyCode === 87) {
+      $('#A3').removeClass('nick');
+      sineOscillator.stop();
+    } else if (event.keyCode === 69) {
+      $('#B3').removeClass('nick');
+      sineOscillator.stop();
+    } else if (event.keyCode === 82) {
+      $('#middleC').removeClass('close5');
+      sineOscillator.stop();
+    } else if (event.keyCode === 84) {
+      $('#D4').removeClass('nick');
+      sineOscillator.stop();
+    } else if (event.keyCode === 89) {
+      $('#E4').removeClass('nick');
+      sineOscillator.stop();
+    } else if (event.keyCode === 85) {
+      $('#F4').removeClass('close3');
+      sineOscillator.stop();
+    } else if (event.keyCode === 73) {
+      $('#G4').removeClass('close1');
+      sineOscillator.stop();
+    } else if (event.keyCode === 79) {
+      $('#A4').removeClass('close2');
+      sineOscillator.stop();
+    } else if (event.keyCode === 80) {
+      $('#B4').removeClass('nick');
+      sineOscillator.stop();
+    } else if (event.keyCode === 219) {
+      $('#C5').removeClass('nick');
+      sineOscillator.stop();
+    } else if (event.keyCode === 221) {
+      $('#D5').removeClass('nick');
+      sineOscillator.stop();
+    } else if (event.keyCode === 220) {
+      $('#E5').removeClass('nick');
+      sineOscillator.stop();
+    }
+
   });
+
 }
-// document.getElementById('sineStart').addEventListener('mouseout', function() {
-//   sineOscillator.stop();
 
-// });
 
+// create Oscilloscope
+// var analyser = oscContext.createAnalyser();
+// var contentWidth = document.getElementById('content').offsetWidth;
+// var oscilloscope = new Oscilloscope(oscContext, analyser, contentWidth, 150);
+// sineOscillator.connect(oscilloscope.analyser);
 
 
 /********************************************

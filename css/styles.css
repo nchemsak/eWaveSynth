@@ -1,9 +1,6 @@
 /******************************************
               CANVAS STYLING
 ******************************************/
-canvas {
-  cursor: none; }
-
 /******************************************
           AUDIO PLAYBACK STYLING
 ******************************************/
@@ -194,5 +191,23 @@ li {
 
 .piano ul li .key:hover {
   background-color: tomato; }
+
+.nick {
+  background-color: tomato; }
+
+.close1 {
+  background-color: red; }
+
+.close2 {
+  background-color: orange; }
+
+.close3 {
+  background-color: pink; }
+
+.close4 {
+  background-color: yellow; }
+
+.close5 {
+  background-color: white; }
 
 /*# sourceMappingURL=styles.css.map */

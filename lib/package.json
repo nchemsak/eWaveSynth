@@ -21,6 +21,7 @@
     "matchdep": "^1.0.1"
   },
   "dependencies": {
+    "angular": "^1.5.9",
     "bootstrap": "^3.3.7",
     "firebase": "^3.6.1",
     "jquery": "^3.1.1",

@@ -12,125 +12,133 @@
 </head>
 
 <body>
-  <div id="wrapper">
+  <!-- <div id="wrapper"> -->
+
+
+
+
+
+  <div id="content">
     <canvas class="thereminCanvas" id="thereminCanvas"></canvas>
     <a id="close" href=""></a>
-    <div>
-      <div class='piano'>
-        <ul>
-          <li>
-            <div class='key'></div>
-            <div class='upper-key'></div>
-          </li>
-          <li>
-            <div class='key'></div>
-            <div class='upper-key'></div>
-          </li>
-          <li>
-            <div class='key'></div>
-            <div class='upper-key'></div>
-          </li>
-          <li>
-            <div class='key'></div>
-            <div class='upper-key'></div>
-          </li>
-          <li>
-            <div class='key' id='middleC'></div>
-            <div class='upper-key'></div>
-          </li>
-          <li>
-            <div class='key'></div>
-            <div class='upper-key'></div>
-          </li>
-          <li>
-            <div class='key'></div>
-            <div class='upper-key'></div>
-          </li>
-          <li>
-            <div class='key'></div>
-            <div class='upper-key'></div>
-          </li>
-          <li>
-            <div class='key'></div>
-            <div class='upper-key'></div>
-          </li>
-          <li>
-            <div class='key'></div>
-            <div class='upper-key'></div>
-          </li>
-          <li>
-            <div class='key'></div>
-            <div class='upper-key'></div>
-          </li>
-          <li>
-            <div class='key' id="upperC"></div>
-            <div class='upper-key'></div>
-          </li>
-          <li>
-            <div class='key'></div>
-            <div class='upper-key'></div>
-          </li>
-          <li>
-            <div class='key'></div>
-            <div class='upper-key'></div>
-          </li>
-        </ul>
-      </div>
-      <input id="audio_file" type="file" accept="audio/*" />
-      <audio id="audio_player" />
-      <button id="lfoStart">LFO Play</button>
-      <button id="lfoStop">LFO Stop</button>
-      <!-- <button id="thereminStart">Theremin Play</button> -->
-      <button id="thereminStop">Theremin Stop</button>
-      <button id="squareStart">SquareWave Play</button>
-      <button id="squareStop">SquareWave Stop</button>
-      <!-- <button id="sineStart">SineWave Play</button> -->
-      <button id="sineStop">SineWave Stop</button>
-      <button id="sawStart">SawtoothWave Play</button>
-      <button id="sawStop">SawtoothWave Stop</button>
-      <button id="triStart">TriangleWave Play</button>
-      <button id="triStop">TriangleWave Stop</button>
-      <button id="synthStart">Synth Play</button>
-      <button id="synthStop">Synth Stop</button>
-      <!-- <button onclick="document.getElementById('player').pause()">Pause</button>
-      <button onclick="document.getElementById('player').volume += 0.1">Vol+ </button>
-      <button onclick="document.getElementById('player').volume -= 0.1">Vol- </button> -->
-      <!-- </div> -->
+    <canvas id="oscilloscope"></canvas>
+    <div class='piano'>
       <ul>
         <li>
-          <a class='list-item' id='thereminStart'>
-            Theremin
-          </a>
+          <div class='key' id='F3'></div>
+          <div class='upper-key'></div>
         </li>
         <li>
-          <!-- <a class='list-item' id='sineStart'> -->
-          <i>SineWave</i>
-          </a>
+          <div class='key' id='G3'></div>
+          <div class='upper-key'></div>
         </li>
         <li>
-          <a class='list-item' href="" f=''>
-            <i class='icon-bar-chart'>Overdrive</i>
-          </a>
+          <div class='key' id='A3'></div>
+          <div class='upper-key'></div>
         </li>
         <li>
-          <a class='list-item' href=''>
-            <i class='icon-tasks'>Delay</i>
-          </a>
+          <div class='key' id='B3'></div>
+          <div class='upper-key'></div>
         </li>
         <li>
-          <a class='list-item' href=''>
-            <i class='icon-bell'>Volume</i>
-          </a>
+          <div class='key' id='middleC'></div>
+          <div class='upper-key'></div>
+        </li>
+        <li>
+          <div class='key' id='D4'></div>
+          <div class='upper-key'></div>
+        </li>
+        <li>
+          <div class='key' id='E4'></div>
+          <div class='upper-key'></div>
+        </li>
+        <li>
+          <div class='key' id='F4'></div>
+          <div class='upper-key'></div>
+        </li>
+        <li>
+          <div class='key' id='G4'></div>
+          <div class='upper-key'></div>
+        </li>
+        <li>
+          <div class='key' id='A4'></div>
+          <div class='upper-key'></div>
+        </li>
+        <li>
+          <div class='key' id='B4'></div>
+          <div class='upper-key'></div>
+        </li>
+        <li>
+          <div class='key' id="C5"></div>
+          <div class='upper-key'></div>
+        </li>
+        <li>
+          <div class='key' id='D5'></div>
+          <div class='upper-key'></div>
+        </li>
+        <li>
+          <div class='key' id='E5'></div>
+          <div class='upper-key'></div>
         </li>
       </ul>
     </div>
+    <!-- </div> -->
   </div>
-  <!-- bootstrap script tags -->
+  <input id="audio_file" type="file" accept="audio/*" />
+  <audio id="audio_player"></audio>
+  <button id="lfoStart">LFO Play</button>
+  <button id="lfoStop">LFO Stop</button>
+  <button id="thereminStart">Theremin Play</button>
+  <button id="thereminStop">Theremin Stop</button>
+  <button id="squareStart">SquareWave Play</button>
+  <button id="squareStop">SquareWave Stop</button>
+  <!-- <button id="sineStart">SineWave Play</button> -->
+  <button id="sineStop">SineWave Stop</button>
+  <button id="sawStart">SawtoothWave Play</button>
+  <button id="sawStop">SawtoothWave Stop</button>
+  <button id="triStart">TriangleWave Play</button>
+  <button id="triStop">TriangleWave Stop</button>
+  <button id="synthStart">Synth Play</button>
+  <button id="synthStop">Synth Stop</button>
+  <!-- <button onclick="document.getElementById('player').pause()">Pause</button>
+      <button onclick="document.getElementById('player').volume += 0.1">Vol+ </button>
+      <button onclick="document.getElementById('player').volume -= 0.1">Vol- </button> -->
+  <!-- </div> -->
+  <ul>
+    <!--     <li>
+      <a class='list-item' id='thereminStart'>
+            Theremin
+          </a>
+    </li> -->
+    <li>
+      <!-- <a class='list-item' id='sineStart'> -->
+      <i>SineWave</i>
+      <!-- </a> -->
+    </li>
+    <li>
+      <a class='list-item' href="">
+        <i class='icon-bar-chart'>Overdrive</i>
+      </a>
+    </li>
+    <li>
+      <a class='list-item' href=''>
+        <i class='icon-tasks'>Delay</i>
+      </a>
+    </li>
+    <li>
+      <a class='list-item' href=''>
+        <i class='icon-bell'>Volume</i>
+      </a>
+    </li>
+  </ul>
+
   <script src="lib/node_modules/jquery/dist/jquery.min.js"></script>
   <script src="lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="/lib/node_modules/tone/build/Tone.min.js"></script>
+  <!-- <script src="/lib/node_modules/tone/build/Tone.min.js"></script> -->
+   <script src="lib/node_modules/angular/angular.min.js"></script>
+  <script src="lib/bower_components/oscilloscope.js/oscilloscope.js"></script>
   <script src="javascripts/loopOscillator.js"></script>
-  <script src="javascripts/playWav.js"></script>
+  <!-- <script src="javascripts/playWav.js"></script> -->
   <script src="javascripts/theramin.js"></script>
   <script src="javascripts/lfo.js"></script>
   <script src="javascripts/waveForms.js"></script>
