@@ -1,5 +1,4 @@
 'use strict';
-var AudioContext;
 var oscContext = new AudioContext();
 
 // Create an audio-context
@@ -37,21 +36,6 @@ let F3 = 174.614,
   E5 = 659.255;
 
 
-document.getElementById('squareStart').addEventListener('click', function() {
-  squareStart();
-});
-
-// document.getElementById('keyPlay').addEventListener('mouseover', function() {
-//   keyPlay();
-// });
-
-document.getElementById('sawStart').addEventListener('click', function() {
-  sawStart();
-});
-
-document.getElementById('triStart').addEventListener('click', function() {
-  triStart();
-});
 
 /********************************************
       RADIO BUTTONS CHOOSING WAVE FORM
@@ -132,7 +116,7 @@ Keyboard play note and listen for Keyup to stop
 
 function keyPlay(freq) {
   var oscillator = oscContext.createOscillator();
-  // console.log("oscillator: ", oscillator);
+  console.log("oscillator: ", oscillator);
   oscillator.type = oscType;
   console.log("oscType: ", oscType);
   oscillator.frequency.value = freq;
@@ -188,59 +172,3 @@ function keyPlay(freq) {
 
 }
 
-
-// create Oscilloscope
-// var analyser = oscContext.createAnalyser();
-// var contentWidth = document.getElementById('content').offsetWidth;
-// var oscilloscope = new Oscilloscope(oscContext, analyser, contentWidth, 150);
-// oscillator.connect(oscilloscope.analyser);
-
-
-/********************************************
-               SQUARE WAVE
-**********************************************/
-function squareStart() {
-  var squareOscillator = oscContext.createOscillator();
-  // console.log("squareOscillator: ", squareOscillator);
-  squareOscillator.type = oscTypeSquare;
-  squareOscillator.frequency.value = squareFreqVal;
-  squareOscillator.connect(oscContext.destination);
-  squareOscillator.start();
-  document.getElementById('squareStop').addEventListener('click', function() {
-    squareOscillator.stop();
-  });
-}
-
-
-/********************************************
-               SAWTOOTH WAVE
-**********************************************/
-function sawStart() {
-  var sawOscillator = oscContext.createOscillator();
-  // console.log("sawOscillator: ", sawOscillator);
-  sawOscillator.type = oscTypeSine;
-  sawOscillator.frequency.value = sawFreqVal;
-  sawOscillator.connect(oscContext.destination);
-  sawOscillator.start();
-  document.getElementById('sawStop').addEventListener('click', function() {
-    sawOscillator.stop();
-  });
-}
-
-/********************************************
-               TRIANGLE WAVE
-**********************************************/
-function triStart() {
-  var triOscillator = oscContext.createOscillator();
-  // console.log("triOscillator: ", triOscillator);
-  triOscillator.type = oscTypeSine;
-  triOscillator.frequency.value = triFreqVal;
-  triOscillator.connect(oscContext.destination);
-  triOscillator.start();
-  document.getElementById('triStop').addEventListener('click', function() {
-    triOscillator.stop();
-  });
-}
-
-
-// module.exports = { keyPlay, squareStart, sawStart, triStart };

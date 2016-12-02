@@ -1,5 +1,4 @@
 'use strict';
-var AudioContext;
 var audio_file;
 var audio_player;
 

@@ -264,4 +264,23 @@ aside {
 input[type=checkbox]:checked ~ aside {
   transform: translateX(0); }
 
+#thereminCanvas {
+  float: left;
+  width: 500px;
+  height: 500px;
+  border-radius: 3px;
+  background: #1E1E1E url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAIUlEQVQYV2P8+vWrJAMRgBGkkJub+zkhtaMK8YYQ0cEDABxGJwNr5yClAAAAAElFTkSuQmCC); }
+
+#thereminCanvas:hover {
+  cursor: crosshair; }
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: ""; }
+
+.clearfix:after {
+  clear: both; }
+
 /*# sourceMappingURL=styles.css.map */

@@ -14,7 +14,7 @@
 
 <body>
   <!-- <div id="wrapper"> -->
-  <div id="content">
+  <div id="content" class="clearfix">
     <canvas class="thereminCanvas" id="thereminCanvas"></canvas>
     <!-- <a id="close" href=""></a> -->
     <!-- <canvas id="oscilloscope"></canvas> -->
@@ -101,6 +101,10 @@
     </div>
     <!-- </div> -->
   </div>
+  <p>
+    <button id="play" class="pure-button pure-button-disabled">PLAY</button>
+    <button id="pause" class="pure-button">PAUSE</button>
+  </p>
   <input id="audio_file" type="file" accept="audio/*" />
   <audio id="audio_player"></audio>
   <button id="lfoStart">LFO Play</button>
