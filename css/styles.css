@@ -1,9 +1,6 @@
-/******************************************
-              CANVAS STYLING
-******************************************/
-/******************************************
-          AUDIO PLAYBACK STYLING
-******************************************/
+/************************************************************************************
+                                  AUDIO PLAYBACK STYLES
+************************************************************************************/
 * {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -34,12 +31,11 @@ body {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0); }
 
-/******************************************
-              BLACK BUTTON STYLING
-******************************************/
+/************************************************************************************
+                                  BLACK BUTTON STYLES
+************************************************************************************/
 .list-item {
   background: #000;
-  color: #575757;
   text-align: center;
   height: 2.5em;
   width: 4em;
@@ -99,7 +95,6 @@ body {
 
 .list-item:after {
   height: 4em;
-  background: #181818;
   bottom: -2.25em;
   left: 1.5em;
   -webkit-transform: rotate(90deg) skew(0, 45deg);
@@ -107,7 +102,6 @@ body {
 
 .list-item:before {
   height: 2.5em;
-  background: #121212;
   top: .25em;
   left: -.5em;
   -webkit-transform: skewY(-45deg);
@@ -116,10 +110,10 @@ body {
 li {
   list-style: none; }
 
-/******************************************
-              PIANO STYLING
-******************************************/
-.piano {
+/************************************************************************************
+                                  PIANO STYLES
+************************************************************************************/
+#piano {
   text-align: center;
   margin: 15px 0;
   -moz-user-select: -moz-none;
@@ -128,75 +122,71 @@ li {
   user-select: none;
   width: 100%; }
 
-.piano ul li .key {
+#piano ul li .key {
   width: 56px;
   height: 140px; }
 
-.piano ul li .upper-key {
+#piano ul li .upper-key {
   height: 84px;
   width: 22.4px; }
 
-.piano ul li:nth-child(7n-6) .upper-key,
-.piano ul li:nth-child(7n-2) .upper-key {
+#piano ul li:nth-child(7n-6) .upper-key,
+#piano ul li:nth-child(7n-2) .upper-key {
   left: 43.68px; }
 
-.piano ul li:nth-child(7n-5) .upper-key {
+#piano ul li:nth-child(7n-5) .upper-key {
   left: 47.04px; }
 
-.piano ul li:nth-child(7n-4) .upper-key,
-.piano ul li:nth-child(7n-1) .upper-key {
+#piano ul li:nth-child(7n-4) .upper-key,
+#piano ul li:nth-child(7n-1) .upper-key {
   left: 50.4px; }
 
-.piano ul li:nth-child(7n - 3) .upper-key,
-.piano ul li:nth-child(7n) .upper-key {
+#piano ul li:nth-child(7n - 3) .upper-key,
+#piano ul li:nth-child(7n) .upper-key {
   display: none; }
 
-.piano ul {
+#piano ul {
   display: inline-block;
   vertical-align: middle;
   *vertical-align: auto;
   *zoom: 1;
   *display: inline; }
 
-.piano ul li {
+#piano ul li {
   box-sizing: border-box;
   float: left;
   position: relative;
   border: red 1px solid; }
 
-.piano ul li .key {
+#piano ul li .key {
   cursor: pointer; }
 
-.piano ul li .key:active {
+#piano ul li .key:active {
   background: #f6ecdd;
   box-shadow: gray 0px 1px 3px -1px; }
 
 div.key {
-  color: black;
   font-size: 2em; }
 
-.piano ul li .upper-key {
+#piano ul li .upper-key {
   border-radius: 3px;
   border: white 1px solid;
-  transition-property: background, box-shadow;
-  transition-duration: 0.1s;
-  box-shadow: black 0px 3px 3px 0px;
   cursor: pointer;
   background: #262626;
   position: absolute;
   top: 0;
   z-index: 1; }
 
-.piano ul li .upper-key:active {
-  box-shadow: black 0px 1px 1px 0px; }
-
-.piano ul li .upper-key:hover {
+#piano ul li .upper-key:hover {
   background-color: tomato; }
 
-.piano ul li .key:hover {
+#piano ul li .key:hover {
   background-color: tomato; }
 
 .nick {
+  background-color: tomato; }
+
+.nick2 {
   background-color: tomato; }
 
 .close1 {
@@ -218,20 +208,13 @@ div.key {
   display: inline;
   margin-left: 20px; }
 
-li {
-  opacity: 0; }
-
-div.upper-key {
-  opacity: 100;
-  background-color: black; }
-
 .btn {
   background-color: black;
   border: 1px solid white; }
 
-/******************************************
-          RECORDER
-******************************************/
+/************************************************************************************
+                                  RECORDER
+************************************************************************************/
 header {
   height: 70px; }
 
@@ -264,11 +247,10 @@ aside {
 input[type=checkbox]:checked ~ aside {
   transform: translateX(0); }
 
+/************************************************************************************
+                                  THEREMIN AND CANVAS STYLES
+************************************************************************************/
 #thereminCanvas {
-  float: left;
-  width: 500px;
-  height: 500px;
-  border-radius: 3px;
   background: #1E1E1E url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAIUlEQVQYV2P8+vWrJAMRgBGkkJub+zkhtaMK8YYQ0cEDABxGJwNr5yClAAAAAElFTkSuQmCC); }
 
 #thereminCanvas:hover {
@@ -282,5 +264,24 @@ input[type=checkbox]:checked ~ aside {
 
 .clearfix:after {
   clear: both; }
+
+/************************************************************************************
+                                  MEDIA RECORDER STYLES
+************************************************************************************/
+p.borderBelow {
+  margin: 0 0 20px 0;
+  padding: 0 0 20px 0; }
+
+video {
+  height: 232px;
+  margin: 0 12px 20px 0;
+  vertical-align: top;
+  width: calc(20em - 10px); }
+
+video:last-of-type {
+  margin: 0 0 20px 0; }
+
+video#live {
+  margin: 0 20px 20px 0; }
 
 /*# sourceMappingURL=styles.css.map */

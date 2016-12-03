@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- mabells zoo - brendas app -->
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Title</title>
+  <!-- <base target="_blank"> -->
+  <title>eWave Synth</title>
+  <!-- google fonts -->
+  <!-- <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css"> -->
   <!-- bootstrap stylesheet -->
   <link rel="stylesheet" href="lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link type="text/css" rel="stylesheet" href="lib/node_modules/materialize-css/dist/css/materialize.min.css" media="screen,projection" />
+  <!-- materialize stylesheet -->
+  <link type="text/css" rel="stylesheet" href="lib/node_modules/materialize-css/dist/css/materialize.min.css" media="screen">
   <!-- custom stylesheet -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -15,12 +20,16 @@
 <body>
   <!-- <div id="wrapper"> -->
   <div id="content" class="clearfix">
+    <!--**********************************************************************-->
+    <!--                     THEREMIN CANVAS                                 -->
+    <!--**********************************************************************-->
     <canvas class="thereminCanvas" id="thereminCanvas"></canvas>
     <!-- <a id="close" href=""></a> -->
     <!-- <canvas id="oscilloscope"></canvas> -->
-    <div class='piano'>
-      <!-- <a class="waves-effect waves-light btn-large" href="#">Wave</a> -->
-      <!-- <a href="#!" class="btn waves-effect waves-red">Send</a> -->
+    <!--**********************************************************************-->
+    <!--                              PIANO                                -->
+    <!--**********************************************************************-->
+    <div id='piano'>
       <a href="#!" class="waves-effect waves-red btn" onclick="Materialize.showStaggeredList('#staggered')">Keyboard</a>
       <form action="#" name="waveOption">
         <div class="radio1">
@@ -43,68 +52,81 @@
       <ul id='staggered'>
         <li>
           <div class='key' id='F3'>F</div>
-          <div class='upper-key'></div>
+          <div class='upper-key' id='F3sh'>F#</div>
         </li>
         <li>
           <div class='key' id='G3'>G</div>
-          <div class='upper-key'></div>
+          <div class='upper-key' id='G3sh'>G#</div>
         </li>
         <li>
           <div class='key' id='A3'>A</div>
-          <div class='upper-key'></div>
+          <div class='upper-key' id='A3sh'>A#</div>
         </li>
         <li>
           <div class='key' id='B3'>B</div>
-          <div class='upper-key'></div>
         </li>
         <li>
-          <div class='key' id='middleC'>C</div>
-          <div class='upper-key'></div>
+          <div class='key' id='C4'>C</div>
+          <div class='upper-key' id='C4sh'>C#</div>
         </li>
         <li>
           <div class='key' id='D4'>D</div>
-          <div class='upper-key'></div>
+          <div class='upper-key' id='D4sh'>D#</div>
         </li>
         <li>
           <div class='key' id='E4'>E</div>
-          <div class='upper-key'></div>
         </li>
         <li>
           <div class='key' id='F4'>F</div>
-          <div class='upper-key'></div>
+          <div class='upper-key' id='F4sh'>F#</div>
         </li>
         <li>
           <div class='key' id='G4'>G</div>
-          <div class='upper-key'></div>
+          <div class='upper-key' id='G4sh'>G#</div>
         </li>
         <li>
           <div class='key' id='A4'>A</div>
-          <div class='upper-key'></div>
+          <div class='upper-key' id='A4sh'>A#</div>
         </li>
         <li>
           <div class='key' id='B4'>B</div>
-          <div class='upper-key'></div>
         </li>
         <li>
           <div class='key' id="C5">C</div>
-          <div class='upper-key'></div>
+          <div class='upper-key' id='C5sh'>C#</div>
         </li>
         <li>
           <div class='key' id='D5'>D</div>
-          <div class='upper-key'></div>
+          <div class='upper-key' id='D5sh'>D#</div>
         </li>
         <li>
           <div class='key' id='E5'>E</div>
-          <div class='upper-key'></div>
         </li>
       </ul>
     </div>
     <!-- </div> -->
   </div>
-  <p>
-    <button id="play" class="pure-button pure-button-disabled">PLAY</button>
-    <button id="pause" class="pure-button">PAUSE</button>
-  </p>
+  <a class="waves-effect waves-light btn-large" href="#">Wave</a>
+  <a href="#!" class="btn waves-effect waves-red">Send</a>
+  <!--**********************************************************************-->
+  <!--                     qwerty keyboard                              -->
+  <!--**********************************************************************-->
+  <div id="keyboard"></div>
+  <!--**********************************************************************-->
+  <!--                      MEDIA RECORDER API                              -->
+  <!--**********************************************************************-->
+  <div id="container">
+    <video id="live" autoplay muted></video>
+    <video id="recorded" autoplay loop></video>
+    <div>
+      <button id="recordButton" class="btn waves-effect waves-red" disabled>Start Recording</button>
+      <button id="playButton" class="btn waves-effect waves-red" disabled>Play</button>
+      <button id="downloadButton" class="btn waves-effect waves-red" disabled>Download</button>
+    </div>
+  </div>
+  <!--**********************************************************************-->
+  <!--                      basic buttons                                 -->
+  <!--**********************************************************************-->
   <input id="audio_file" type="file" accept="audio/*" />
   <audio id="audio_player"></audio>
   <button id="lfoStart">LFO Play</button>
@@ -152,20 +174,23 @@
       </a>
     </li>
   </ul>
+  <!--**********************************************************************-->
+  <!--                      SCRIPT TAGS                                     -->
+  <!--**********************************************************************-->
   <script src="lib/node_modules/jquery/dist/jquery.min.js"></script>
   <script src="lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="lib/node_modules/materialize-css/dist/js/materialize.min.js"></script>
   <!-- <script src="/lib/node_modules/tone/build/Tone.min.js"></script> -->
   <script src="lib/node_modules/angular/angular.min.js"></script>
-  <script src="lib/bower_components/oscilloscope.js/oscilloscope.js"></script>
-  <script src="javascripts/loopOscillator.js"></script>
-  <!-- <script src="javascripts/playWav.js"></script> -->
-  <script src="javascripts/theramin.js"></script>
-  <script src="javascripts/lfo.js"></script>
+  <script src="lib/node_modules/qwerty-hancock.min.js"></script>
   <script src="javascripts/keyboard.js"></script>
+  <!-- <script src="lib/bower_components/oscilloscope.js/oscilloscope.js"></script> -->
+  <!-- <script src="javascripts/loopOscillator.js"></script> -->
+  <!-- <script src="javascripts/oscillators.js"></script> -->
+  <script src="javascripts/playWav.js"></script>
+  <script src="javascripts/theramin.js"></script>
+  <!-- <script src="javascripts/lfo.js"></script> -->
   <script src="javascripts/mediaRecorder.js"></script>
-  <script src="lib/node_modules/materialize-css/dist/js/materialize.min.js"></script>
-  <!-- <script src="javascripts/gamepad.js"></script> -->
-  <!-- <script src="javascripts/curtain.js"></script> -->
 </body>
 
 </html>
