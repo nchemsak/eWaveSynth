@@ -1,66 +1,141 @@
 'use strict';
-var oscContext = new AudioContext();
+let keyboardContext = new AudioContext();
+// let keyboard = new QwertyHancock({
+//   id: 'keyboard',
+//   octaves: 2
+// });
 
-// Create an audio-context
-var audioContext = new window.AudioContext();
-// oscillator = audioContext.createOscillator();
-
-// shapes
-var oscTypeSquare = "square";
-var oscTypeSine = "sine";
-var oscTypeSaw = "sawtooth";
-var oscTypeTri = "triangle";
-var oscType;
-
-// frequencies
-var squareFreqVal = 1000;
-var sineFreqVal = 261.625565;
-var sawFreqVal = 1000;
-var triFreqVal = 1000;
-
+let oscType = "square"; //default wave type
 
 let F3 = 174.614,
+  F3sh = 184.997,
   G3 = 195.998,
+  G3sh = 207.652,
   A3 = 220,
+  A3sh = 233.082,
   B3 = 246.942,
-  middleC = 261.625565,
-  Csh4 = 277.183,
+  C4 = 261.626,
+  C4sh = 277.183,
   D4 = 293.665,
+  D4sh = 311.127,
   E4 = 329.628,
   F4 = 349.228,
+  F4sh = 369.994,
   G4 = 391.995,
+  G4sh = 415.305,
   A4 = 440,
+  A4sh = 466.164,
   B4 = 493.883,
   C5 = 523.251,
+  C5sh = 554.365,
   D5 = 587.330,
+  D5sh = 622.254,
   E5 = 659.255;
-
 
 
 /********************************************
       RADIO BUTTONS CHOOSING WAVE FORM
 **********************************************/
 
-$(document).ready(function() {
-  oscType = 'square';
-  $('input[type=radio]').click(function() {
-    if (this.id === 'Sine') {
-      oscType = "sine";
-    } else if (this.id === 'Square') {
-      oscType = "square";
-    } else if (this.id === 'Saw') {
-      oscType = "sawtooth";
-    } else if (this.id === 'Triangle') {
-      oscType = "triangle";
-    }
-    return oscType;
-  });
+$('input[type=radio]').click(function() {
+  if (this.id === 'Sine') {
+    oscType = "sine";
+  } else if (this.id === 'Square') {
+    oscType = "square";
+  } else if (this.id === 'Saw') {
+    oscType = "sawtooth";
+  } else if (this.id === 'Triangle') {
+    oscType = "triangle";
+  }
+  return oscType;
 });
 
+
+// var keyboardContext = new AudioContext(),
+//   masterVolume = keyboardContext.createGain();
+
+// masterVolume.gain.value = 0.3;
+// masterVolume.connect(keyboardContext.destination);
+
+
+
+// var oscillators = {};
+
+// keyboard.keyDown = function(note, frequency) {
+
+//   var osc = keyboardContext.createOscillator();
+//   // osc2 = keyboardContext.createOscillator();
+//   osc.type = oscType;
+//   osc.frequency.value = frequency;
+//   // osc.type = 'square';
+
+//   // osc2.frequency.value = frequency;
+//   // osc2.type = 'square';
+
+//   osc.connect(masterVolume);
+//   // osc2.connect(masterVolume);
+
+//   masterVolume.connect(keyboardContext.destination);
+
+//   // oscillators[frequency] = [osc, osc2];
+//   oscillators[frequency] = [osc];
+//   osc.start(keyboardContext.currentTime);
+//   // osc2.start(keyboardContext.currentTime);
+//   osc.detune.value = -10;
+//   // osc2.detune.value = 10;
+// };
+
+// keyboard.keyUp = function(note, frequency) {
+//   oscillators[frequency].forEach(function(oscillator) {
+//     oscillator.stop(keyboardContext.currentTime);
+//   });
+// };
+
+
+
+
+/********************************************
+          Keyboard Event Listener SHARPS
+**********************************************/
+
+// addEventListener("keydown", function() {
+//   if (event.keyCode === 49) {
+//     $('#F3sh').addClass('nick2');
+//     keyPlay(F3sh);
+//   } else if (event.keyCode === 50) {
+//     $('#G3sh').addClass('nick2');
+//     keyPlay(G3sh);
+//   } else if (event.keyCode === 51) {
+//     $('#A3sh').addClass('nick2');
+//     keyPlay(A3sh);
+//   } else if (event.keyCode === 53) {
+//     $('#B3sh').addClass('nick2');
+//     keyPlay(C4sh);
+//   } else if (event.keyCode === 54) {
+//     $('#C4sh').addClass('nick2');
+//     keyPlay(D4sh);
+//   } else if (event.keyCode === 56) {
+//     $('#D4sh').addClass('nick2');
+//     keyPlay(F4sh);
+//   } else if (event.keyCode === 57) {
+//     $('#E4sh').addClass('nick2');
+//     keyPlay(G4sh);
+//   } else if (event.keyCode === 48) {
+//     $('#F4sh').addClass('nick2');
+//     keyPlay(A4sh);
+//   } else if (event.keyCode === 187) {
+//     $('#G4sh').addClass('nick2');
+//     keyPlay(C5sh);
+//   } else if (event.keyCode === 8) {
+//     $('#A4sh').addClass('nick2');
+//     keyPlay(D5sh);
+//   }
+// });
 
 /********************************************
           Keyboard Event Listener
 **********************************************/
+
 
 addEventListener("keydown", function() {
   if (event.keyCode === 9) {
@@ -76,9 +151,9 @@ addEventListener("keydown", function() {
     $('#B3').addClass('nick');
     keyPlay(B3);
   } else if (event.keyCode === 82) {
-    $('#middleC').addClass('close5');
-    keyPlay(middleC);
-  } else if (event.keyCode === 84) {
+    $('#C4').addClass('close5');
+    keyPlay(C4);
+  } else if (event.keyCode == 84) {
     $('#D4').addClass('nick');
     keyPlay(D4);
   } else if (event.keyCode === 89) {
@@ -99,76 +174,116 @@ addEventListener("keydown", function() {
   } else if (event.keyCode === 219) {
     $('#C5').addClass('nick');
     keyPlay(C5);
-  } else if (event.keyCode === 221) {
-    $('#D5').addClass('nick');
-    keyPlay(D5);
-  } else if (event.keyCode === 220) {
-    $('#E5').addClass('nick');
-    keyPlay(E5);
+    // } else if (event.keyCode === 221) {
+    //   $('#D5').addClass('nick');
+    //   keyPlay(D5);
+    // } else if (event.keyCode === 220) {
+    //   $('#E5').addClass('nick');
+    //   keyPlay(E5);
   }
 
 });
+
+
 
 /********************************************
 Keyboard play note and listen for Keyup to stop
 **********************************************/
 
 
-function keyPlay(freq) {
-  var oscillator = oscContext.createOscillator();
-  console.log("oscillator: ", oscillator);
+function keyPlay(frequency) {
+  var oscillator = keyboardContext.createOscillator();
   oscillator.type = oscType;
-  console.log("oscType: ", oscType);
-  oscillator.frequency.value = freq;
-  oscillator.connect(oscContext.destination);
+  oscillator.frequency.value = frequency;
+  oscillator.connect(keyboardContext.destination);
   oscillator.start();
-  // oscillator.stop(1);
+
+// var oscillators = {};
+
+// keyboard.keyDown = function(note, frequency) {
+
+//   var osc = keyboardContext.createOscillator();
+//   // osc2 = keyboardContext.createOscillator();
+//   osc.type = oscType;
+//   osc.frequency.value = frequency;
+//   // osc.type = 'square';
+
+//   // osc2.frequency.value = frequency;
+//   // osc2.type = 'square';
+
+//   osc.connect(masterVolume);
+//   // osc2.connect(masterVolume);
+
+//   masterVolume.connect(keyboardContext.destination);
+
+//   // oscillators[frequency] = [osc, osc2];
+//   oscillators[frequency] = [osc];
+//   osc.start(keyboardContext.currentTime);
+//   // osc2.start(keyboardContext.currentTime);
+//   osc.detune.value = -10;
+//   // osc2.detune.value = 10;
+// };
+
+// keyboard.keyUp = function(note, frequency) {
+//   oscillators[frequency].forEach(function(oscillator) {
+//     oscillator.stop(keyboardContext.currentTime);
+//   });
+// };
+
+
   addEventListener("keyup", function(event) {
     if (event.keyCode === 9) {
       $('#F3').removeClass('close4');
-      oscillator.stop();
     } else if (event.keyCode === 81) {
       $('#G3').removeClass('nick');
-      oscillator.stop();
     } else if (event.keyCode === 87) {
       $('#A3').removeClass('nick');
-      oscillator.stop();
     } else if (event.keyCode === 69) {
       $('#B3').removeClass('nick');
-      oscillator.stop();
     } else if (event.keyCode === 82) {
-      $('#middleC').removeClass('close5');
-      oscillator.stop();
+      $('#C4').removeClass('close5');
     } else if (event.keyCode === 84) {
       $('#D4').removeClass('nick');
-      oscillator.stop();
     } else if (event.keyCode === 89) {
       $('#E4').removeClass('nick');
-      oscillator.stop();
     } else if (event.keyCode === 85) {
       $('#F4').removeClass('close3');
-      oscillator.stop();
     } else if (event.keyCode === 73) {
       $('#G4').removeClass('close1');
-      oscillator.stop();
     } else if (event.keyCode === 79) {
       $('#A4').removeClass('close2');
-      oscillator.stop();
     } else if (event.keyCode === 80) {
       $('#B4').removeClass('nick');
-      oscillator.stop();
     } else if (event.keyCode === 219) {
       $('#C5').removeClass('nick');
-      oscillator.stop();
     } else if (event.keyCode === 221) {
       $('#D5').removeClass('nick');
-      oscillator.stop();
     } else if (event.keyCode === 220) {
       $('#E5').removeClass('nick');
-      oscillator.stop();
+    } else if (event.keyCode === 49) {
+      $('#G3').removeClass('nick');
+    } else if (event.keyCode === 50) {
+      $('#A3').removeClass('nick');
+    } else if (event.keyCode === 51) {
+      $('#B3').removeClass('nick');
+    } else if (event.keyCode === 53) {
+      $('#C4').removeClass('nick');
+    } else if (event.keyCode === 54) {
+      $('#D4').removeClass('nick');
+    } else if (event.keyCode === 56) {
+      $('#E4').removeClass('nick');
+    } else if (event.keyCode === 57) {
+      $('#F4').removeClass('nick');
+    } else if (event.keyCode === 48) {
+      $('#G4').removeClass('nick');
+    } else if (event.keyCode === 187) {
+      $('#A4').removeClass('nick');
+    } else if (event.keyCode === 8) {
+      $('#A4').removeClass('nick');
     }
+    oscillator.stop();
+
 
   });
 
 }
-

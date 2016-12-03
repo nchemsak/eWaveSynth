@@ -1,7 +1,6 @@
 'use strict';
 var audio_file;
 var audio_player;
-
 var context = new AudioContext();
 
 var audio = new Audio();

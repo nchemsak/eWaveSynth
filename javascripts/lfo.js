@@ -1,6 +1,6 @@
 'use strict';
-var lfoContext = new AudioContext();
 
+var lfoContext = new AudioContext();
 /********************************************
                LFO
 **********************************************/
