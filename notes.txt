@@ -1,0 +1,54 @@
+DON'T USE A FOR LOOP. JavaScript is single threaded.
+It will not synchronize to the JavaScript clock.
+DO NOT USE THE JAVASCRIPT CLOCK: setInterval and setTimeout aren't guaranteed to execute in the time specified.
+
+JavaScript is single threaded, therefore each unit of execution blocks the progess of another asynchronous event.
+JavaScript will not enqueue more than one instance of a setInterval handler.
+
+When scheduling a note, you look ahead.
+
+Sequencer:
+Get a play event.
+Reset startTime and noteTime
+
+
+```javascript
+while (nextNoteTime < currentTime + lookAheadTime ) {
+  scheduleNote( nextNoteTime );
+  advanceNote();
+}
+```
+
+the schedule loop:
+```
+function schedule() {
+  var currentTime = audioContext.currentTime - startTime;
+  while (nextNoteTime < currentTime + lookAheadTime ) {
+    scheduleNotes( nextNoteTime );
+    advanceNote();
+  }
+  timeoutId = setTimeout(schedule, 0);
+}
+```
+
+NOTES:
+'startTime' is the time at which you hit "play".
+'currentTime' is the time since startTime: It is the time SINCE hitting play and starting the sequencer
+'nextNoteTime' is the scheduled time for the next note to play, based on the tempo.
+'lookAheadTime' depends on the execution speed of JavaScript.
+
+schedule notes AHEAD OF TIME, with the exact time that you want them to play.
+save timeoutId so that you can stop the sequencer (clearTimeout(timeoutId);).
+
+Most of the time, the while loop isn't even run, because after it executes successfully
+and a note is scheduled, it increments nextNoteTime to the next time that a note is scheduled, which may or may not be less than currentTime + lookAheadTime.
+
+```
+function advanceNote() {
+  var secondsPerBeat = 60.0 / currentTempo();
+  nextNoteTime += beatGranularity * secondsPerBeat;
+}
+```
+
+when advancing the note, need to grab the current tempo and advance the note based on the time signature.
+In most cases, the grid will be sixteenth notes, so beatGranularity = 0.25.

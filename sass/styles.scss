@@ -1,6 +1,3 @@
-
-
-
 /************************************************************************************
                                   AUDIO PLAYBACK STYLES
 ************************************************************************************/
@@ -407,7 +404,6 @@ input[type=checkbox]:checked ~ aside {
                                   THEREMIN AND CANVAS STYLES
 ************************************************************************************/
 
-
 canvas {
   // background-color: #79BD9A;
   // width: 100%;
@@ -419,6 +415,7 @@ canvas {
   //   background-color: lightgrey;
   //   // background-image: '..wave.jpg';
 }
+
 #thereminCanvas {
   // float: left;
   // width: 500px;
@@ -482,4 +479,44 @@ video#live {
 //   video#gumVideo {
 //     margin: 0 10px 10px 0;
 //   }
+// }
+
+/************************************************************************************
+                                  SEQUENCER STYLES
+************************************************************************************/
+
+// audio {
+//   display: none;
+// }
+
+// table tr {
+//   height: 20px;
+// }
+
+// table td {
+//   width: 20px;
+//   background-color: lightgrey;
+//   padding: 5px;
+// }
+
+// table td.on {
+//   background-color: darkgrey;
+// }
+
+// table td.hit {
+//   background-color: red;
+// }
+
+// ul {
+//   float: left;
+// }
+
+// ul li {
+//   padding: 10px;
+//   list-style: none;
+//   float: left;
+// }
+
+// ul li a {
+//   text-decoration: none;
 // }
