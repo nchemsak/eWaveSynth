@@ -5,6 +5,8 @@ let keyboardContext = new AudioContext();
 //   octaves: 2
 // });
 
+
+
 let oscType = "square"; //default wave type
 
 let F3 = 174.614,
@@ -49,6 +51,8 @@ $('input[type=radio]').click(function() {
   }
   return oscType;
 });
+
+
 
 
 // var keyboardContext = new AudioContext(),

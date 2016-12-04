@@ -1,22 +1,18 @@
 'use strict';
 var thereminContext = new AudioContext();
-var WIDTH = 500;
-var HEIGHT = 500;
+
+var WIDTH = 800;
+var HEIGHT = 385;
 var maxFreq = 750;
 var maxVol = 0.1;
 var initialFreq = 200;
-var oscillator = thereminContext.createOscillator();
 
 var myCanvas = document.getElementById('thereminCanvas');
-var canvas = document.querySelector('#thereminCanvas');
-
 
 
 document.getElementById('thereminStart').addEventListener('click', function() {
   thereminStart();
 });
-// canvas.addEventListener('mousedown', thereminStart());
-// canvas.addEventListener('mouseout', oscillator.stop());
 
 
 // /********************************************
@@ -24,53 +20,46 @@ document.getElementById('thereminStart').addEventListener('click', function() {
 // **********************************************/
 function thereminStart() {
 
-  // var oscillator = thereminContext.createOscillator();
+  var squareFreqVal = 100;
+  var oscillator = thereminContext.createOscillator();
   var gain = thereminContext.createGain();
+  oscillator.frequency.value = squareFreqVal;
   oscillator.connect(thereminContext.destination);
   gain.connect(thereminContext.destination);
   gain.gain.value = 0.3;
+  // console.log("gain.gain.value: ", gain.gain.value);
   oscillator.type = 'square';
   oscillator.frequency.value = initialFreq;
   oscillator.start();
-  canvas.addEventListener('mouseout', oscillator.stop());
 
 
   // THEREMIN STOP and CLEAR CANVAS
-  // document.getElementById('thereminStop').addEventListener('click', function() {
+  document.getElementById('thereminStop').addEventListener('click', function() {
+    var c = document.getElementById("thereminCanvas");
+    c.width = 800;
+    c.height = 385;
+    oscillator.stop();
+  });
 
-  //   oscillator.stop();
-  // });
-
-
-
-  //   myCanvas.addEventListener('mousemove', SynthPad.updateFrequency);
-  //   myCanvas.addEventListener('touchmove', SynthPad.updateFrequency);
-
-  //   myCanvas.addEventListener('mouseout', SynthPad.stopSound);
-  // };
-
-
-
-  // SynthPad.stopSound = function(event) {
-  //   oscillator.stop(0);
-
-  //   // myCanvas.removeEventListener('mousemove', SynthPad.updateFrequency);
-  //   // myCanvas.removeEventListener('touchmove', SynthPad.updateFrequency);
-  //   canvas.removeEventListener('mouseout', oscillator.stop(););
-  // };
 
   /********************************************
                 MOUSE POINTER COORDINATES
   **********************************************/
   var CurX;
   var CurY;
-  canvas.onmousemove = updatePage;
+  document.onmousemove = updatePage;
 
   function updatePage(e) {
     CurX = (window.Event) ? e.pageX : event.clientX + (document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft);
+    console.log("window: ", window);
+    console.log("window.Event: ", window.Event);
+    console.log("CurX: ", CurX);
     CurY = (window.Event) ? e.pageY : event.clientY + (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
+    console.log("CurY: ", CurY);
     oscillator.frequency.value = (CurX / WIDTH) * maxFreq;
     gain.gain.value = (CurY / HEIGHT) * maxVol;
+    console.log("gain.gain.value: ", gain.gain.value);
+
     canvasDraw();
   }
 
@@ -81,25 +70,29 @@ function thereminStart() {
 
 
 
-  //   /********************************************
-  //              THERAMIN CANVAS DRAWING
-  //   **********************************************/
+//   /********************************************
+//              THERAMIN CANVAS DRAWING
+//   **********************************************/
 
 
   // var canvas = document.createElement('canvas');
   // canvas.className = "thereminCanvas";
   // canvas.width = 800;
   // canvas.height = 385;
-
+  var canvas = document.querySelector('.thereminCanvas');
 
   canvas.width = WIDTH;
   canvas.height = HEIGHT;
 
 
   var canvasCtx = canvas.getContext('2d');
+  console.log("canvasCtx: ", canvasCtx);
 
   function canvasDraw() {
     var rC = Math.floor((gain.gain.value / maxVol) * 30);
+
+    // canvasCtx.globalAlpha = 1;
+
     for (var i = 1; i <= 15; i = i + 2) {
 
       canvasCtx.beginPath();
@@ -108,8 +101,8 @@ function thereminStart() {
       canvasCtx.strokeStyle = 'rgb(' + 100 + (i * 10) + ',' + Math.floor((gain.gain.value / maxVol) * 255) + ',' + Math.floor((oscillator.frequency.value / maxFreq) * 255) + ')';
 
       // CIRCLES pattern
-      canvasCtx.rect(CurX + random(-30, 30), CurY + random(-30, 30), rC / 2 + i, (Math.PI / 180) * 0, (Math.PI / 180) * 360, true);
-      canvasCtx.rect(CurX + random(-30, 30), CurY + random(-30, 30), rC / 2 + i, (Math.PI / 180) * 0, (Math.PI / 180) * 360, true);
+      canvasCtx.arc(CurX + random(-30, 30), CurY + random(-30, 30), rC / 2 + i, (Math.PI / 180) * 0, (Math.PI / 180) * 360, true);
+      canvasCtx.arc(CurX + random(-30, 30), CurY + random(-30, 30), rC / 2 + i, (Math.PI / 180) * 0, (Math.PI / 180) * 360, true);
 
 
       //SQUARES pattern
@@ -129,11 +122,20 @@ function thereminStart() {
 }
 
 
+
+
+
+
+
+
+
+
 /********************************************
            ALL NEW CODE
 **********************************************/
 
-var SynthPad = function() {
+
+var SynthPad = (function() {
   // Variables
   var myCanvas;
   var frequencyLabel;
@@ -162,9 +164,14 @@ var SynthPad = function() {
 
   // Event Listeners
   SynthPad.setupEventListeners = function() {
+
+    // Disables scrolling on touch devices.
+    document.body.addEventListener('touchmove', function(event) {
+      event.preventDefault();
+    }, false);
+
     myCanvas.addEventListener('mousedown', SynthPad.playSound);
     myCanvas.addEventListener('touchstart', SynthPad.playSound);
-
 
     myCanvas.addEventListener('mouseup', SynthPad.stopSound);
     document.addEventListener('mouseleave', SynthPad.stopSound);
@@ -177,7 +184,7 @@ var SynthPad = function() {
     oscillator = myAudioContext.createOscillator();
     gainNode = myAudioContext.createGain();
 
-    oscillator.type = 'sawtooth';
+    oscillator.type = 'square';
 
     gainNode.connect(myAudioContext.destination);
     oscillator.connect(gainNode);
@@ -192,7 +199,7 @@ var SynthPad = function() {
     myCanvas.addEventListener('mouseout', SynthPad.stopSound);
   };
 
-
+  // Stop the audio.
   SynthPad.stopSound = function(event) {
     oscillator.stop(0);
 
@@ -240,5 +247,5 @@ var SynthPad = function() {
   // Export SynthPad.
   return SynthPad;
 
-}();
+})();
 var synthPad = new SynthPad();
