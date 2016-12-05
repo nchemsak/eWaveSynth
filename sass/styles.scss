@@ -334,7 +334,7 @@ div.key {
 }
 
 li {
-  // opacity: 0;
+  opacity: 0;
 }
 
 div.upper-key {
@@ -488,35 +488,43 @@ video#live {
 // audio {
 //   display: none;
 // }
-
 // table tr {
 //   height: 20px;
 // }
-
 // table td {
 //   width: 20px;
 //   background-color: lightgrey;
 //   padding: 5px;
 // }
-
 // table td.on {
 //   background-color: darkgrey;
 // }
-
 // table td.hit {
 //   background-color: red;
 // }
-
 // ul {
 //   float: left;
 // }
-
 // ul li {
 //   padding: 10px;
 //   list-style: none;
 //   float: left;
 // }
-
 // ul li a {
 //   text-decoration: none;
 // }
+
+/************************************************************************************
+                                  GAIN NODE STYLES
+************************************************************************************/
+
+#volume {
+  width: 300px;
+  margin: 0 auto;
+}
+
+#panner {
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}

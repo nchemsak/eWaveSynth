@@ -208,6 +208,9 @@ div.key {
   display: inline;
   margin-left: 20px; }
 
+li {
+  opacity: 0; }
+
 .btn {
   background-color: black;
   border: 1px solid white; }
@@ -287,5 +290,16 @@ video#live {
 /************************************************************************************
                                   SEQUENCER STYLES
 ************************************************************************************/
+/************************************************************************************
+                                  GAIN NODE STYLES
+************************************************************************************/
+#volume {
+  width: 300px;
+  margin: 0 auto; }
+
+#panner {
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 30px; }
 
 /*# sourceMappingURL=styles.css.map */
