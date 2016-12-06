@@ -48,7 +48,7 @@ function playSound(anybuffer) {
 
   // DELAY NODE
   var delay = context.createDelay();
-  delay.delayTime.value = 0.1;
+  // delay.delayTime.value = 0.05;
   source.connect(delay);
   delay.connect(context.destination);
   source.connect(context.destination);
@@ -56,7 +56,7 @@ function playSound(anybuffer) {
 
   source.connect(context.destination);
   // source.start();
-  source.playbackRate.value = 0.75; //use playbackrate to change speed.
+  // source.playbackRate.value = 0.75; //use playbackrate to change speed.
 
   source.start(context.currentTime + 0, 38, 2);
   //these 3 numbers mean, start the song after pausing x seconds, start x seconds into the song, and stop after playing it after x seconds)

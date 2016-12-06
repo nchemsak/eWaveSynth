@@ -1,0 +1,23 @@
+{
+  "presets": [{
+    "description": "reverb",
+    "image": "",
+    "name": "",
+    "price": ""
+  }, {
+   "description": "delay",
+    "image": "",
+    "name": "",
+    "price": ""
+  }, {
+    "description": "distortion",
+    "image": "",
+    "name": "",
+    "price": ""
+  }, {
+    "description": "panning",
+    "image": "",
+    "name": "",
+    "price": ""
+  }]
+}

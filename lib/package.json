@@ -27,6 +27,7 @@
     "jquery": "^3.1.1",
     "materialize-css": "^0.97.8",
     "tone": "^0.8.0",
-    "waaclock": "^0.5.3"
+    "waaclock": "^0.5.3",
+    "webmidi": "^2.0.0-rc.2"
   }
 }
